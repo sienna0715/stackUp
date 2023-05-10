@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Word from "./page/Word";
+import Keep from "./page/Keep";
+import Challenge from "./page/Challenge";
+import Menu from "./commons/Menu";
+import styled from "styled-components";
+import Footer from "./commons/Footer";
+import { useState } from "react";
+
+export type MenuType = string;
 
 function App() {
+  const menus: string[] = ["word", "keep", "challenge"];
+  const [currentTab, setCurrentTab] = useState(menus[0]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Wrap>
+        <Menu
+          menus={menus}
+          currentTab={currentTab}
+          setCurrentTab={setCurrentTab}
+        />
+        <Container>
+          <Routes>
+            <Route path="/" element={<Word currentTab={currentTab} />} />
+            <Route path="/keep" element={<Keep currentTab={currentTab} />} />
+            <Route
+              path="/challenge"
+              element={<Challenge currentTab={currentTab} />}
+            />
+          </Routes>
+          <Footer />
+        </Container>
+      </Wrap>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+const Wrap = styled.div`
+  width: 100%;
+  display: flex;
+  background-color: #f5f5f5;
+`;
+
+const Container = styled.div`
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
