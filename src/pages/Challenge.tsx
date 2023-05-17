@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function Challenge({ currentTab }: any) {
+function Challenge() {
   return <ChallengeWrap></ChallengeWrap>;
 }
 
@@ -10,6 +10,9 @@ export default Challenge;
 const ChallengeWrap = styled.div`
   width: 80vw;
   height: 100vh;
-  background-color: #f5f5f5;
+  display: flex;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

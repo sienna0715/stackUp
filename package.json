@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/uuid": "^9.0.1",
     "ts-loader": "^9.4.2"
   }
 }

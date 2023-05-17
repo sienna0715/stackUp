@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Word from "./page/Word";
-import Keep from "./page/Keep";
-import Challenge from "./page/Challenge";
-import Menu from "./commons/Menu";
+import Word from "./pages/Word";
+import Keep from "./pages/Keep";
+import Challenge from "./pages/Challenge";
+import Menu from "./components/commons/Menu";
 import styled from "styled-components";
-import Footer from "./commons/Footer";
+import Footer from "./components/commons/Footer";
 import { useState } from "react";
 
 export type MenuType = string;
@@ -17,38 +17,36 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Wrap>
+      <BodyWrap>
         <Menu
           menus={menus}
           currentTab={currentTab}
           setCurrentTab={setCurrentTab}
         />
-        <Container>
+        <BodyContainer>
           <Routes>
-            <Route path="/" element={<Word currentTab={currentTab} />} />
-            <Route path="/keep" element={<Keep currentTab={currentTab} />} />
-            <Route
-              path="/challenge"
-              element={<Challenge currentTab={currentTab} />}
-            />
+            <Route path="/" element={<Word />} />
+            <Route path="/keep" element={<Keep />} />
+            <Route path="/challenge" element={<Challenge />} />
           </Routes>
           <Footer />
-        </Container>
-      </Wrap>
+        </BodyContainer>
+      </BodyWrap>
     </BrowserRouter>
   );
 }
 
 export default App;
 
-const Wrap = styled.div`
+const BodyWrap = styled.div`
   width: 100%;
   display: flex;
-  background-color: #f5f5f5;
 `;
 
-const Container = styled.div`
-  height: 70%;
+const BodyContainer = styled.div`
+  width: 100%;
+  height: max-content;
+  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   position: relative;

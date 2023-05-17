@@ -1,20 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
+import { v4 as uuidv4 } from "uuid";
 
-function Modal({isModal, setIsModal}: any) {
+type Type = {
+  isModal: boolean;
+  setIsModal: (state: boolean) => void;
+  onAdd: any;
+};
+
+function WordModal({ isModal, setIsModal, onAdd }: Type) {
+  const [wordText, setWordText] = useState("");
+  const [meanText, setMeanText] = useState("");
+  const [descriptionText, setDescriptionText] = useState("");
+
+  const handleChangeWord = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setWordText(e.target.value);
+  };
+
+  const handleChangeMean = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMeanText(e.target.value);
+  };
+
+  const handleChangeDescription = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setDescriptionText(e.target.value);
+  };
+
+  const handleSunmit = (e: React.MouseEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onAdd({
+      id: uuidv4(),
+      word: wordText,
+      mean: meanText,
+      description: descriptionText,
+      bookmark: false,
+    });
+    setIsModal(false)
+  };
+
   return (
-    <ModalWrap>
+    <ModalWrap onSubmit={handleSunmit}>
       <Close onClick={() => setIsModal(!isModal)}>
         <AiOutlineClose />
       </Close>
       <ModalContainer>
         <Label>Word</Label>
-        <Input />
+        <Input type="text" value={wordText} onChange={handleChangeWord} />
         <Label>Meaning</Label>
-        <Input />
+        <Input type="text" value={meanText} onChange={handleChangeMean} />
         <Label>Description</Label>
-        <Textarea />
+        <Textarea value={descriptionText} onChange={handleChangeDescription} />
         <ButtonBox>
           <Button>등록</Button>
         </ButtonBox>
@@ -23,9 +60,9 @@ function Modal({isModal, setIsModal}: any) {
   );
 }
 
-export default Modal;
+export default WordModal;
 
-const ModalWrap = styled.div`
+const ModalWrap = styled.form`
   width: 500px;
   height: 450px;
   position: absolute;

@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import KeepModal from "../commons/KeepModal";
-import * as C from "../commons/Styled";
+import KeepModal from "../components/keep/KeepModal";
+import AddButton from "../components/commons/AddButton";
 
-function Keep({ currentTab }: any) {
+function Keep() {
   const [isModal, setIsModal] = useState(false);
 
   return (
     <KeepWrap>
       <>
-        <C.AddButton onClick={() => setIsModal(true)}>+</C.AddButton>
+      <ButtonBox onClick={() => setIsModal(true)}>
+          <AddButton />
+        </ButtonBox>
         {isModal ? <KeepModal isModal={isModal} setIsModal={setIsModal} /> : false}
       </>
     </KeepWrap>
@@ -21,8 +23,11 @@ export default Keep;
 const KeepWrap = styled.div`
   width: 80vw;
   height: 100vh;
-  background-color: #f5f5f5;
+  display: flex;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 const Card = styled.div`
   width: 70vw;
@@ -37,3 +42,4 @@ const CardWord = styled.span`
 `;
 const CardMean = styled.span``;
 const CardDescription = styled.span``;
+const ButtonBox = styled.div``;
