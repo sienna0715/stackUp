@@ -55,7 +55,6 @@ export default Keep;
 
 function saveKeeps() {
   const keeps = localStorage.getItem("keep");
-  console.log(keeps)
   return keeps ? JSON.parse(keeps) : [];
 }
 

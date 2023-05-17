@@ -90,17 +90,16 @@ function saveWords() {
 }
 
 const WordWrap = styled.div`
-  width: 82vw;
+  width: 100%;
   min-height: 100vh;
-  display: flex;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
 `;
 const WordContainer = styled.div`
   width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const FilterBox = styled.div`
@@ -114,6 +113,7 @@ const CardBox = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const ButtonBox = styled.div``;
