@@ -59,7 +59,7 @@ export default Menu;
 
 const MenuWrap = styled.div`
   min-width: 360px;
-  height: 105vh;
+  min-height: 100vh;
   padding: 0 2rem;
   background-color: #fff;
   box-shadow: 15px 0px 20px -15px rgba(118, 118, 118, 0.6);

@@ -1,18 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
+import { v4 as uuidv4 } from "uuid";
 
-function KeepModal({isModal, setIsModal}: any) {
+function KeepModal({ isModal, setIsModal, onAdd }: any) {
+  const [titleText, setTilteText] = useState("");
+  const [urlText, setUrlText] = useState("");
+
+  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTilteText(e.target.value);
+  };
+
+  const handleChangeURL = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUrlText(e.target.value);
+  };
+
+  const handleSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onAdd({
+      id: uuidv4(),
+      title: titleText,
+      url: urlText,
+    });
+    setIsModal(false);
+  };
+
   return (
-    <ModalWrap>
+    <ModalWrap onSubmit={handleSubmit}>
       <Close onClick={() => setIsModal(!isModal)}>
         <AiOutlineClose />
       </Close>
       <ModalContainer>
         <Label>Title</Label>
-        <Input />
+        <Input type="text" value={titleText} onChange={handleChangeTitle} />
         <Label>URL</Label>
-        <Input />
+        <Input type="text" value={urlText} onChange={handleChangeURL} />
         <ButtonBox>
           <Button>등록</Button>
         </ButtonBox>
@@ -23,7 +45,7 @@ function KeepModal({isModal, setIsModal}: any) {
 
 export default KeepModal;
 
-const ModalWrap = styled.div`
+const ModalWrap = styled.form`
   width: 500px;
   height: 310px;
   position: absolute;

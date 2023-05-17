@@ -85,13 +85,13 @@ function getFiltered(words: object[], filter: string) {
 }
 
 function saveWords() {
-  const words = localStorage.getItem("words");
+  const words = localStorage.getItem("word");
   return words ? JSON.parse(words) : [];
 }
 
 const WordWrap = styled.div`
   width: 82vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   padding: 2rem;
   display: flex;

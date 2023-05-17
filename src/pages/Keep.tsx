@@ -1,45 +1,79 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import KeepModal from "../components/keep/KeepModal";
 import AddButton from "../components/commons/AddButton";
+import KeepCard from "../components/keep/KeepCard";
+
+type KeepData = {
+  id?: string;
+  title?: string;
+  url?: string;
+};
 
 function Keep() {
+  const [keeps, setKeeps] = useState(saveKeeps);
   const [isModal, setIsModal] = useState(false);
+
+  const handleAdd = (keep: KeepData) => {
+    setKeeps([...keeps, keep]);
+  };
+
+  const handleDelete = (deleted: KeepData) => {
+    setKeeps(keeps.filter((keep: KeepData) => keep.id !== deleted.id));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("keep", JSON.stringify(keeps));
+  }, [keeps]);
 
   return (
     <KeepWrap>
-      <>
-      <ButtonBox onClick={() => setIsModal(true)}>
+      <KeepContainer>
+        <ButtonBox onClick={() => setIsModal(true)}>
           <AddButton />
         </ButtonBox>
-        {isModal ? <KeepModal isModal={isModal} setIsModal={setIsModal} /> : false}
-      </>
+        {isModal ? (
+          <KeepModal
+            isModal={isModal}
+            setIsModal={setIsModal}
+            onAdd={handleAdd}
+          />
+        ) : (
+          false
+        )}
+        <CardBox>
+          {keeps.map((data: object, index: number) => (
+            <KeepCard key={index} data={data} onDelete={handleDelete} />
+          ))}
+        </CardBox>
+      </KeepContainer>
     </KeepWrap>
   );
 }
 
 export default Keep;
 
+function saveKeeps() {
+  const keeps = localStorage.getItem("keep");
+  console.log(keeps)
+  return keeps ? JSON.parse(keeps) : [];
+}
+
 const KeepWrap = styled.div`
-  width: 80vw;
-  height: 100vh;
-  display: flex;
+  width: 100%;
+  min-height: 100vh;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
-const Card = styled.div`
-  width: 70vw;
-  height: 8rem;
-  background-color: #fff;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-  box-shadow: 0px 0px 10px 1px rgba(209, 209, 209, 0.6);
+
+const KeepContainer = styled.div`
+  width: 100%;
 `;
-const CardWord = styled.span`
-  font-size: 1.5rem;
-`;
-const CardMean = styled.span``;
-const CardDescription = styled.span``;
+
 const ButtonBox = styled.div``;
+
+const CardBox = styled.div`
+  width: 100%;
+  padding: 0 3rem;
+  display: flex;
+  flex-wrap: wrap;
+`;

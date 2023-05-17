@@ -22,9 +22,7 @@ function WordModal({ isModal, setIsModal, onAdd }: Type) {
     setMeanText(e.target.value);
   };
 
-  const handleChangeDescription = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  const handleChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDescriptionText(e.target.value);
   };
 
@@ -70,36 +68,36 @@ const ModalWrap = styled.form`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  z-index: 9;
-  border-radius: 10px;
   box-shadow: 0px 0px 10px 1px rgba(209, 209, 209, 0.6);
+  border-radius: 10px;
+  z-index: 9;
 `;
 
 const ModalContainer = styled.div`
   width: 100%;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3rem;
 `;
 
 const Close = styled.span`
+  font-size: 1.3rem;
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 1.3rem;
 `;
 
 const Label = styled.label`
-  font-weight: bold;
   margin-bottom: 1rem;
+  font-weight: bold;
 `;
 const Input = styled.input`
-  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 2rem;
   padding: 0.5rem 1rem;
   border: 1px solid #aaa;
-  margin-bottom: 2rem;
-  font-size: 1rem;
+  border-radius: 5px;
 `;
 const Textarea = styled.textarea`
   height: 90px;
@@ -113,11 +111,11 @@ const ButtonBox = styled.div`
   justify-content: flex-end;
 `;
 const Button = styled.button`
-  background: #242323;
-  color: #fff;
   width: 70px;
   height: 30px;
-  border-radius: 5px;
   font-size: 1rem;
   margin-top: 1rem;
+  background: #242323;
+  color: #fff;
+  border-radius: 5px;
 `;

@@ -15,8 +15,6 @@ function WordCard({ data, onUpdate, onDelete }: any) {
     onUpdate({...data, bookmark})
   }
 
-  const handleDelete = () => onDelete(data);
-
   return (
     <CardContainer>
       <Bookmark onClick={handleClick}>
@@ -33,7 +31,7 @@ function WordCard({ data, onUpdate, onDelete }: any) {
               <BiPencil className="icon" />
               Edit
             </DotItem>
-            <DotItem onClick={handleDelete}>
+            <DotItem onClick={() => onDelete(data)}>
               <BiTrashAlt className="icon" />
               Delete
             </DotItem>
