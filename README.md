@@ -20,6 +20,6 @@ https://stack-up.vercel.app/
 
 ## 🛠️ Main function
 - CRUD
-- 북마크 필터링
-- 로컬스토리지 저장
-- 유튜브 링크 저장
+- bookmark filtering
+- save to localstorage
+- Save Youtube Link
