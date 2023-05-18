@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 function ChallengeCard() {
-  const getData: any = localStorage.getItem("word")
+  const getData: any = localStorage.getItem("word");
   const words = JSON.parse(getData);
   const bookmark = words.filter((word: any) => word.bookmark).length;
 
@@ -30,14 +30,16 @@ function ChallengeCard() {
 export default ChallengeCard;
 
 const CardContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
 `;
 
 const Card = styled.div`
   width: 33%;
+  min-width: 300px;
   height: 400px;
-  margin-right: 1.3rem;
+  margin-right: 1.5rem;
   padding: 3rem;
   background-color: #fff;
   border-radius: 0.5rem;

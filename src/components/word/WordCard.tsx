@@ -18,7 +18,7 @@ function WordCard({ data, onUpdate, onDelete }: any) {
   return (
     <CardContainer>
       <Bookmark onClick={handleClick}>
-        {isBookmark ? <AiFillStar className="fill" /> : <AiOutlineStar />}
+        {bookmark ? <AiFillStar className="fill" /> : <AiOutlineStar />}
       </Bookmark>
       <Card>
         {isDot ? (
