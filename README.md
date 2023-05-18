@@ -22,4 +22,4 @@ https://stack-up.vercel.app/
 - CRUD
 - bookmark filtering
 - save to localstorage
-- Save Youtube Link
+- save Youtube link
