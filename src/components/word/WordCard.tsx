@@ -70,6 +70,7 @@ const Bookmark = styled.div`
     color: #fcda32;
   }
 `;
+
 const Card = styled.div`
   width: 100%;
   height: max-content;
@@ -85,6 +86,7 @@ const Card = styled.div`
     cursor: pointer;
   }
 `;
+
 const CardWord = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
@@ -92,9 +94,11 @@ const CardWord = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 const CardMean = styled.div`
   padding-bottom: 2rem;
 `;
+
 const CardDescription = styled.div``;
 
 const Bar = styled.div`
